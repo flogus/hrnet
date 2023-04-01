@@ -1,0 +1,17 @@
+nav ul{
+    list-style-type:none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    background-color: lightskyblue;
+}
+nav ul li a{
+    display: flex;
+    justify-content: center;
+    background-color: lightskyblue;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+nav ul li a:hover{
+    background-color: lightblue;
+}
