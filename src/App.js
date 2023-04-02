@@ -1,3 +1,4 @@
+import React from "react";
 import '../src/css/App.css';
 import '../src/css/hrnet.css';
 import '../src/css/jquery.datetimepicker.css';
