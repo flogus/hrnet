@@ -1,9 +1,14 @@
 import React from 'react'
+import Customselect from '../../components/customselect/customselect'
+import data from '../../data/states.js'
 
 export default function form () {
   function saveEmployee () {
     console.log('Save employee')
   }
+  const data2 = [
+      'nane','tets'
+  ]
   return (
     <div className='container'>
       <form action='#' id='create-employee'>
@@ -19,6 +24,7 @@ export default function form () {
         <label htmlFor='start-date'>Start Date</label>
         <input id='start-date' type='text' />
 
+        <Customselect label='The Date' data={data} />
         <fieldset className='address'>
           <legend>Address</legend>
 
