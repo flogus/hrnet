@@ -1,5 +1,7 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
+import { useSelector } from 'react-redux'
+// const employee = useSelector(employee)
 
 const columns = [
   'First Name',
@@ -42,16 +44,18 @@ const options = {
   download: false,
   filter: false,
   selectableRows: 'none',
-  displayRowCheckbox:false,
+  displayRowCheckbox: false
 }
 
 export default function table () {
   return (
-    <MUIDataTable
-      title={'Current Employees'}
-      data={data}
-      columns={columns}
-      options={options}
-    />
+    <div>
+      <MUIDataTable
+        title={'Current Employees'}
+        data={data}
+        columns={columns}
+        options={options}
+      />
+    </div>
   )
 }

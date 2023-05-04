@@ -1,56 +1,232 @@
 import React from 'react'
-import Customselect from '../../components/customselect/customselect'
-import data from '../../data/states.js'
+import { useDispatch } from 'react-redux'
+// import store from '../../store/store'
+// import { addEmploye, removeEmploye } from '../../store/employeSlice'
+
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import dayjs from 'dayjs'
+
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+
+import Box from '@mui/material/Box'
+import { TextField } from '@mui/material'
+import dataStates from '../../data/states.js'
+import Button from '@mui/material/Button'
+import SendIcon from '@mui/icons-material/Send'
+import FormControl from '@mui/material/FormControl'
+import { FlogModalComponent } from 'flogmodal'
+import 'flogmodal/dist/index.css'
+
+import './form.css'
 
 export default function form () {
+  const dispatch = useDispatch()
   function saveEmployee () {
-    console.log('Save employee')
+    console.log(
+      'Save employee',
+      department,
+      firstName,
+      lastName,
+      street,
+      city,
+      zipCode,
+      dateOfBirth.$M + 1,
+      dateOfBirth.$D,
+      dateOfBirth.$y,
+      startDate.$M + 1,
+      startDate.$D,
+      startDate.$y
+    )
   }
-  const data2 = [
-      'nane','tets'
-  ]
+
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
+  const [department, setDepartment] = React.useState('')
+  const [street, setStreet] = React.useState('')
+  const [city, setCity] = React.useState('')
+  const [zipCode, setZipCode] = React.useState('')
+  const [americanState, setAmericanState] = React.useState('CA')
+  const [dateOfBirth, setDateOfBirth] = React.useState('')
+  const [startDate, setStartDate] = React.useState('')
+
+  const handleDepartementChange = event => {
+    setDepartment(event.target.value)
+  }
+
+  const newEmploye = {
+    firstname: 'bill',
+    lastname: 'gates',
+    dateofbirth: '20/10/1990',
+    startdate: '01/01/2023',
+    adress: [
+      {
+        street: 'boulevard',
+        city: 'nantes',
+        state: 'California',
+        zipcode: '90303'
+      }
+    ],
+    departement: 'engineering'
+  }
+
+  const menuList = dataStates.map(element => (
+    <MenuItem value={element.abbreviation} key={element.abbreviation}>
+      {element.name} - {element.abbreviation}
+    </MenuItem>
+  ))
+
+  const sayHello = () => {
+    console.log('HELLOO')
+  }
+
+  const ModalButton = document.getElementsByTagName('FlogModalComponent')
+  console.log(ModalButton)
+  // ModalButton.addEventListener('click', () => alert('Hi user!'))
+
   return (
     <div className='container'>
       <form action='#' id='create-employee'>
-        <label htmlFor='first-name'>First Name</label>
-        <input type='text' id='first-name' />
+        <div className='spaceBetween'>
+          <TextField
+            id='firstName'
+            label='First name'
+            variant='outlined'
+            margin='none'
+            onChange={event => setFirstName(event.target.value)}
+            fullWidth
+          />
+        </div>
+        <div className='spaceBetween'>
+          <TextField
+            id='lastName'
+            label='Last name'
+            variant='outlined'
+            margin='none'
+            onChange={event => setLastName(event.target.value)}
+            fullWidth
+          />
+        </div>
+        <LocalizationProvider dateAdapter={AdapterDayjs} fullWidth>
+          <div className='spaceBetween'>
+            <FormControl fullWidth>
+              <DatePicker
+                id='dateOfBirth'
+                label='Date of birth'
+                margin='dense'
+                openTo='year'
+                onChange={newValue => setDateOfBirth(newValue)}
+                defaultValue={dayjs('1971-12-27')}
+                format='DD-MM-YYYY'
+              />
+            </FormControl>
+          </div>
+          <div className='spaceBetween'>
+            <FormControl fullWidth>
+              <DatePicker
+                id='startDate'
+                label='Start Date'
+                margin='dense'
+                onChange={newValue => setStartDate(newValue)}
+                defaultValue={dayjs('2023-12-01')}
+                format='DD-MM-YYYY'
+              />
+            </FormControl>
+          </div>
+        </LocalizationProvider>
 
-        <label htmlFor='last-name'>Last Name</label>
-        <input type='text' id='last-name' />
-
-        <label htmlFor='date-of-birth'>Date of Birth</label>
-        <input id='date-of-birth' type='text' />
-
-        <label htmlFor='start-date'>Start Date</label>
-        <input id='start-date' type='text' />
-
-        <Customselect label='The Date' data={data} />
         <fieldset className='address'>
           <legend>Address</legend>
 
-          <label htmlFor='street'>Street</label>
-          <input id='street' type='text' />
+          <div className='spaceBetween'>
+            <TextField
+              id='street'
+              label='Street'
+              variant='outlined'
+              margin='none'
+              onChange={event => setStreet(event.target.value)}
+              fullWidth
+            />
+          </div>
+          <div className='spaceBetween'>
+            <TextField
+              id='city'
+              label='City'
+              variant='outlined'
+              margin='none'
+              onChange={event => setCity(event.target.value)}
+              fullWidth
+            />
+          </div>
 
-          <label htmlFor='city'>City</label>
-          <input id='city' type='text' />
+          <FormControl fullWidth>
+            <Select
+              label='americanState'
+              id='americanState'
+              value='CA'
+              onChange={handleDepartementChange}
+            >
+              {menuList}
+            </Select>
+          </FormControl>
 
-          <label htmlFor='state'>State</label>
-          <select name='state' id='state'></select>
-
-          <label htmlFor='zip-code'>Zip Code</label>
-          <input id='zip-code' type='number' />
+          <div className='spaceBetween'>
+            <TextField
+              id='zipCode'
+              label='Zip-code'
+              variant='outlined'
+              margin='none'
+              onChange={event => setZipCode(event.target.value)}
+              fullWidth
+            />
+          </div>
         </fieldset>
 
-        <label htmlFor='department'>Department</label>
-        <select name='department' id='department'>
-          <option>Sales</option>
-          <option>Marketing</option>
-          <option>Engineering</option>
-          <option>Human Resources</option>
-          <option>Legal</option>
-        </select>
+        <div className='spaceBetween'>
+          <FormControl fullWidth>
+            <Select
+              label='Department'
+              id='department'
+              value='Sales'
+              onChange={handleDepartementChange}
+            >
+              <MenuItem value='Sales'>Sales</MenuItem>
+              <MenuItem value='Marketing'>Marketing</MenuItem>
+              <MenuItem value='Engineering'>Engineering</MenuItem>
+              <MenuItem value='Human Resources'>Human Resources</MenuItem>
+              <MenuItem value='Legal'>Legal</MenuItem>
+            </Select>
+          </FormControl>
+        </div>
+
+        <Button
+          onClick={() => saveEmployee()}
+          variant='contained'
+          endIcon={<SendIcon />}
+        >
+          Save
+        </Button>
+        <br />
+        <br />
+        <button
+          onClick={() => console.log('Click')}
+          // onClick={() => dispatch(addEmploye(newEmploye))}
+          variant='contained'
+          endicon={<SendIcon />}
+        >
+          Add test
+        </button>
       </form>
-      <button onClick={saveEmployee()}>Save</button>
+
+      <FlogModalComponent
+        linkType='button'
+        buttonLabel='Save'
+        titleLabel='HR net'
+        content='Employee Created!'
+        linkTitle='Open the modal with a link'
+      />
     </div>
   )
 }
