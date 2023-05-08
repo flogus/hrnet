@@ -1,40 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  employees: []
+  employees: [
+    [
+      'John',
+      'init',
+      '10/02/2020',
+      'Windows',
+      '28/10/1955',
+      'blue screen street',
+      'Seattle',
+      'Washington',
+      '98101'
+    ]
+  ]
 }
-// {
-//   firstname: 'john',
-//   lastname: 'doe',
-//   dateofbirth: '20/10/1990',
-//   startdate: '01/01/2023',
-//   adress: [
-//     {
-//       street: 'boulevard',
-//       city: 'nantes',
-//       state: 'California',
-//       zipcode: '90303'
-//     }
-//   ],
-//   departement: 'engineering'
-// }
+
+const extraUser = [
+  'Jack',
+  'extraUser',
+  '10/02/2020',
+  'Windows',
+  '28/10/1955',
+  'blue screen street',
+  'Seattle',
+  'Washington',
+  '98101'
+]
 
 export const employeSlice = createSlice({
   name: 'employe',
   initialState,
   reducers: {
     addEmploye: (state, action) => {
+      console.log('addEmploye state :', state, action)
       state.employees = [...state.employees, action.payload]
-      // console.log('addEmploye state :', state)
-      // console.log(
-      //   'addEmploye action :',
-      //   action.payload.firstname,
-      //   action.payload.lastname
-      // )
-      // {
-      //   firstname: action.payload.firstname,
-      //   lastname: action.payload.lastname
-      // }
     },
     removeEmploye: (state, action) => {}
   }

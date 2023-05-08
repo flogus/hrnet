@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-// import store from '../../store/store'
-// import { addEmploye, removeEmploye } from '../../store/employeSlice'
+import { addEmploye } from '../../store/employeSlice'
 
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -11,7 +10,6 @@ import dayjs from 'dayjs'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 
-import Box from '@mui/material/Box'
 import { TextField } from '@mui/material'
 import dataStates from '../../data/states.js'
 import Button from '@mui/material/Button'
@@ -23,8 +21,10 @@ import 'flogmodal/dist/index.css'
 import './form.css'
 
 export default function form () {
-  const dispatch = useDispatch()
   function saveEmployee () {
+    dispatch(addEmploye(JSON.stringify(newEmploye)))
+    setMymodal(true)
+
     console.log(
       'Save employee',
       department,
@@ -44,33 +44,29 @@ export default function form () {
 
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
-  const [department, setDepartment] = React.useState('')
+  const [dateOfBirth, setDateOfBirth] = React.useState('')
+  const [startDate, setStartDate] = React.useState('')
   const [street, setStreet] = React.useState('')
   const [city, setCity] = React.useState('')
   const [zipCode, setZipCode] = React.useState('')
   const [americanState, setAmericanState] = React.useState('CA')
-  const [dateOfBirth, setDateOfBirth] = React.useState('')
-  const [startDate, setStartDate] = React.useState('')
+  const [department, setDepartment] = React.useState('')
 
   const handleDepartementChange = event => {
     setDepartment(event.target.value)
   }
 
-  const newEmploye = {
-    firstname: 'bill',
-    lastname: 'gates',
-    dateofbirth: '20/10/1990',
-    startdate: '01/01/2023',
-    adress: [
-      {
-        street: 'boulevard',
-        city: 'nantes',
-        state: 'California',
-        zipcode: '90303'
-      }
-    ],
-    departement: 'engineering'
-  }
+  const newEmploye = [
+    firstName,
+    lastName,
+    dateOfBirth,
+    startDate,
+    street,
+    city,
+    americanState,
+    zipCode,
+    department
+  ]
 
   const menuList = dataStates.map(element => (
     <MenuItem value={element.abbreviation} key={element.abbreviation}>
@@ -78,13 +74,11 @@ export default function form () {
     </MenuItem>
   ))
 
-  const sayHello = () => {
-    console.log('HELLOO')
-  }
-
   const ModalButton = document.getElementsByTagName('FlogModalComponent')
   console.log(ModalButton)
-  // ModalButton.addEventListener('click', () => alert('Hi user!'))
+  const [mymodal, setMymodal] = useState(false)
+
+  const dispatch = useDispatch()
 
   return (
     <div className='container'>
@@ -210,18 +204,10 @@ export default function form () {
         </Button>
         <br />
         <br />
-        <button
-          onClick={() => console.log('Click')}
-          // onClick={() => dispatch(addEmploye(newEmploye))}
-          variant='contained'
-          endicon={<SendIcon />}
-        >
-          Add test
-        </button>
       </form>
 
       <FlogModalComponent
-        linkType='button'
+        visibility={mymodal}
         buttonLabel='Save'
         titleLabel='HR net'
         content='Employee Created!'
