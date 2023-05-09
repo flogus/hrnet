@@ -15,6 +15,11 @@ nav ul li a {
 nav ul li a {
   color: white;
 }
+nav ul li a.active {
+  color: #5b6e0c;
+  background-color: white;
+}
+
 nav ul li a:hover {
   background-color: #5b6e0c;
   color: white;
