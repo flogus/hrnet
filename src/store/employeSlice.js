@@ -1,19 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  employees: [
-    [
-      'John',
-      'init',
-      '10/02/2020',
-      'Windows',
-      '28/10/1955',
-      'blue screen street',
-      'Seattle',
-      'Washington',
-      '98101'
-    ]
-  ]
+  employees: []
 }
 
 export const employeSlice = createSlice({
