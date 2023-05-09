@@ -1,22 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './navigation.css'
 
-import Box from '@mui/material/Box'
-import Tabs from '@mui/material/Tabs'
-import Tab from '@mui/material/Tab'
-import { Link, Link as RouterLink } from 'react-router-dom'
-
-function LinkTab (props) {
-  return (
-    <Tab
-      component={Link}
-      onClick={event => {
-        event.preventDefault()
-      }}
-      {...props}
-    />
-  )
-}
+import { Link } from 'react-router-dom'
 
 export default function navigation () {
   const [active, setActive] = React.useState(0)
@@ -28,7 +13,7 @@ export default function navigation () {
           <Link
             to='/'
             onClick={() => setActive(0)}
-            className={`${active == 0 && 'active'}`}
+            className={`${active === 0 && 'active'}`}
           >
             Home
           </Link>
@@ -37,7 +22,7 @@ export default function navigation () {
           <Link
             to='/create'
             onClick={() => setActive(1)}
-            className={`${active == 1 && 'active'}`}
+            className={`${active === 1 && 'active'}`}
           >
             Create
           </Link>
@@ -46,7 +31,7 @@ export default function navigation () {
           <Link
             to='/list'
             onClick={() => setActive(2)}
-            className={`${active == 2 && 'active'}`}
+            className={`${active === 2 && 'active'}`}
           >
             List
           </Link>
