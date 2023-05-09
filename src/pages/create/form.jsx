@@ -23,7 +23,6 @@ export default function form () {
   function saveEmployee () {
     dispatch(addEmploye(newEmploye))
     setMymodal(true)
-
     console.log(
       'Save employee',
       department,
@@ -58,8 +57,8 @@ export default function form () {
   const newEmploye = [
     firstName,
     lastName,
-    JSON.stringify(dateOfBirth),
-    JSON.stringify(startDate),
+    dayjs(dateOfBirth).format('DD/MM/YYYY'),
+    dayjs(startDate).format('DD/MM/YYYY'),
     street,
     city,
     americanState,
@@ -112,7 +111,7 @@ export default function form () {
                 openTo='year'
                 onChange={newValue => setDateOfBirth(newValue)}
                 defaultValue={dayjs('1971-12-27')}
-                format='DD-MM-YYYY'
+                format='DD/MM/YYYY'
               />
             </FormControl>
           </div>
@@ -124,7 +123,7 @@ export default function form () {
                 margin='dense'
                 onChange={newValue => setStartDate(newValue)}
                 defaultValue={dayjs('2023-12-01')}
-                format='DD-MM-YYYY'
+                format='DD/MM/YYYY'
               />
             </FormControl>
           </div>
