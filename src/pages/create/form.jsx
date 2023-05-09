@@ -201,16 +201,12 @@ export default function form () {
           onClick={() => saveEmployee()}
           variant='secondary'
           endIcon={<SendIcon />}
+          className='customButton'
         >
           Save
         </Button>
         <br />
         <br />
-        {/* <ThemeProvider theme={hrtheme}>
-          <Button color='main' variant='secondary'>
-            neutral
-          </Button>
-        </ThemeProvider> */}
       </form>
 
       <FlogModalComponent

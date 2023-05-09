@@ -12,3 +12,11 @@ code {
     monospace;
 }
 
+button.customButton[type='button'] {
+  background-color: #97a568;
+  color: white;
+}
+button.customButton:hover {
+  background-color: #5b6e0c;
+  color: white;
+}
