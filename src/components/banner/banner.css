@@ -1,13 +1,15 @@
-.banner{
-    display: flex;
-    justify-content: center;
-    background-color: #3aadf4;
-    align-items: center;
-    flex-direction: column;
+.banner {
+  display: flex;
+  justify-content: center;
+  background-color: #5b6e0c;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
 }
-.banner h1{
-    margin: 0;
+.banner h1 {
+  margin: 0;
+  color: white;
 }
-.banner h2{
-    margin: 0.5rem;
+.banner h2 {
+  margin: 0.5rem;
 }

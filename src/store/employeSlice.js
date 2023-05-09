@@ -16,18 +16,6 @@ const initialState = {
   ]
 }
 
-const extraUser = [
-  'Jack',
-  'extraUser',
-  '10/02/2020',
-  'Windows',
-  '28/10/1955',
-  'blue screen street',
-  'Seattle',
-  'Washington',
-  '98101'
-]
-
 export const employeSlice = createSlice({
   name: 'employe',
   initialState,

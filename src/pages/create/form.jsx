@@ -17,12 +17,14 @@ import SendIcon from '@mui/icons-material/Send'
 import FormControl from '@mui/material/FormControl'
 import { FlogModalComponent } from 'flogmodal'
 import 'flogmodal/dist/index.css'
-
 import './form.css'
+// import hrtheme from './../../components/colorpalette/colorpalette'
+
+import { ThemeProvider } from '@mui/material/styles'
 
 export default function form () {
   function saveEmployee () {
-    dispatch(addEmploye(JSON.stringify(newEmploye)))
+    dispatch(addEmploye(newEmploye))
     setMymodal(true)
 
     console.log(
@@ -59,8 +61,8 @@ export default function form () {
   const newEmploye = [
     firstName,
     lastName,
-    dateOfBirth,
-    startDate,
+    JSON.stringify(dateOfBirth),
+    JSON.stringify(startDate),
     street,
     city,
     americanState,
@@ -197,13 +199,18 @@ export default function form () {
 
         <Button
           onClick={() => saveEmployee()}
-          variant='contained'
+          variant='secondary'
           endIcon={<SendIcon />}
         >
           Save
         </Button>
         <br />
         <br />
+        {/* <ThemeProvider theme={hrtheme}>
+          <Button color='main' variant='secondary'>
+            neutral
+          </Button>
+        </ThemeProvider> */}
       </form>
 
       <FlogModalComponent

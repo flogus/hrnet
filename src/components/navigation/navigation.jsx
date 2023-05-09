@@ -4,20 +4,40 @@ import './navigation.css'
 import Box from '@mui/material/Box'
 import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import { Link, Link as RouterLink } from 'react-router-dom'
+
+function LinkTab (props) {
+  return (
+    <Tab
+      component={Link}
+      onClick={event => {
+        event.preventDefault()
+      }}
+      {...props}
+    />
+  )
+}
 
 export default function navigation () {
-  const [currenttab, setCurrenttab] = useState(0)
-  const setTab = (event, newValue) => {
-    setCurrenttab(newValue)
+  const [value, setValue] = React.useState(0)
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue)
   }
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Tabs value={currenttab} onChange={(event, tab) => setTab(tab)}>
-        <Tab label='Home' href='/' />
-        <Tab label='Create' href='/create' />
-        <Tab label='List' href='/list' />
-      </Tabs>
-    </Box>
+    <nav>
+      <ul>
+        <li>
+          <Link to='/'>Home</Link>
+        </li>
+        <li>
+          <Link to='/create'>Create</Link>
+        </li>
+        <li>
+          <Link to='/list'>List</Link>
+        </li>
+      </ul>
+    </nav>
   )
 }

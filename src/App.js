@@ -21,8 +21,8 @@ function App () {
         <Navigation />
         <Routes>
           <Route index path='/' element={<Home />} />
-          <Route path='create' element={<Create />} />
-          <Route path='list' element={<List />} />
+          <Route path='/create' element={<Create />} />
+          <Route path='/list' element={<List />} />
           <Route path='*' element={<NoMatch />} />
         </Routes>
       </Router>
