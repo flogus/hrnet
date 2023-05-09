@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './navigation.css'
 
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export default function navigation () {
   const [active, setActive] = React.useState(0)
+
+  const location = useLocation()
+  useEffect(() => {
+    if (location.pathname === '/create') {
+      setActive(1)
+    }
+    if (location.pathname === '/list') {
+      setActive(2)
+    }
+    console.log('useeffect', location)
+  }, [location])
 
   return (
     <nav>

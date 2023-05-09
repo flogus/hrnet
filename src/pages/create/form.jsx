@@ -43,8 +43,8 @@ export default function form () {
 
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
-  const [dateOfBirth, setDateOfBirth] = React.useState('')
-  const [startDate, setStartDate] = React.useState('')
+  const [dateOfBirth, setDateOfBirth] = React.useState(dayjs('1971-12-27'))
+  const [startDate, setStartDate] = React.useState(dayjs('2023-12-01'))
   const [street, setStreet] = React.useState('')
   const [city, setCity] = React.useState('')
   const [zipCode, setZipCode] = React.useState('')
@@ -159,7 +159,7 @@ export default function form () {
               label='americanState'
               id='americanState'
               value='CA'
-              onChange={handleDepartementChange}
+              onChange={event => setAmericanState(event.target.value)}
             >
               {menuList}
             </Select>
