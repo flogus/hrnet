@@ -18,9 +18,6 @@ import FormControl from '@mui/material/FormControl'
 import { FlogModalComponent } from 'flogmodal'
 import 'flogmodal/dist/index.css'
 import './form.css'
-// import hrtheme from './../../components/colorpalette/colorpalette'
-
-import { ThemeProvider } from '@mui/material/styles'
 
 export default function form () {
   function saveEmployee () {
