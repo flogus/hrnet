@@ -23,21 +23,6 @@ export default function form () {
   function saveEmployee () {
     dispatch(addEmploye(newEmploye))
     setMymodal(true)
-    console.log(
-      'Save employee',
-      department,
-      firstName,
-      lastName,
-      street,
-      city,
-      zipCode,
-      dateOfBirth.$M + 1,
-      dateOfBirth.$D,
-      dateOfBirth.$y,
-      startDate.$M + 1,
-      startDate.$D,
-      startDate.$y
-    )
   }
 
   const [firstName, setFirstName] = React.useState('')
@@ -48,7 +33,7 @@ export default function form () {
   const [city, setCity] = React.useState('')
   const [zipCode, setZipCode] = React.useState('')
   const [americanState, setAmericanState] = React.useState('CA')
-  const [department, setDepartment] = React.useState('')
+  const [department, setDepartment] = React.useState('Sales')
 
   const handleDepartementChange = event => {
     setDepartment(event.target.value)
@@ -73,7 +58,6 @@ export default function form () {
   ))
 
   const ModalButton = document.getElementsByTagName('FlogModalComponent')
-  console.log(ModalButton)
   const [mymodal, setMymodal] = useState(false)
 
   const dispatch = useDispatch()

@@ -14,7 +14,6 @@ export default function navigation () {
     if (location.pathname === '/list') {
       setActive(2)
     }
-    console.log('useeffect', location)
   }, [location])
 
   return (
