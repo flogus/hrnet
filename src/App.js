@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../src/css/App.css'
 import '../src/css/hrnet.css'
 import '../src/css/jquery.datetimepicker.css'
@@ -14,6 +14,10 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App () {
+  useEffect(() => {
+    document.title = 'HRnet React App'
+  }, [])
+
   return (
     <Provider store={store}>
       <Router>
