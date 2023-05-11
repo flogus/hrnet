@@ -57,7 +57,6 @@ export default function form () {
     </MenuItem>
   ))
 
-  const ModalButton = document.getElementsByTagName('FlogModalComponent')
   const [mymodal, setMymodal] = useState(false)
 
   const dispatch = useDispatch()
