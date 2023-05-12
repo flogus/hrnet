@@ -7,6 +7,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import dayjs from 'dayjs'
 
+import Box from '@mui/material/Box'
+import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
 
@@ -33,9 +35,9 @@ export default function form () {
   const [city, setCity] = React.useState('')
   const [zipCode, setZipCode] = React.useState('')
   const [americanState, setAmericanState] = React.useState('CA')
-  const [department, setDepartment] = React.useState('Sales')
 
-  const handleDepartementChange = event => {
+  const [department, setDepartment] = React.useState('Sales')
+  const handleDepartmentChange = event => {
     setDepartment(event.target.value)
   }
 
@@ -58,7 +60,6 @@ export default function form () {
   ))
 
   const [mymodal, setMymodal] = useState(false)
-
   const dispatch = useDispatch()
 
   return (
@@ -137,10 +138,11 @@ export default function form () {
           </div>
 
           <FormControl fullWidth>
+            <InputLabel id='americanState-label'>State</InputLabel>
             <Select
-              label='americanState'
+              labelId='americanState-label'
               id='americanState'
-              value='CA'
+              value={americanState}
               onChange={event => setAmericanState(event.target.value)}
             >
               {menuList}
@@ -160,20 +162,24 @@ export default function form () {
         </fieldset>
 
         <div className='spaceBetween'>
-          <FormControl fullWidth>
-            <Select
-              label='Department'
-              id='department'
-              value='Sales'
-              onChange={handleDepartementChange}
-            >
-              <MenuItem value='Sales'>Sales</MenuItem>
-              <MenuItem value='Marketing'>Marketing</MenuItem>
-              <MenuItem value='Engineering'>Engineering</MenuItem>
-              <MenuItem value='Human Resources'>Human Resources</MenuItem>
-              <MenuItem value='Legal'>Legal</MenuItem>
-            </Select>
-          </FormControl>
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id='department-label'>Department</InputLabel>
+              <Select
+                labelId='department-label'
+                label='Departement'
+                id='department'
+                value={department}
+                onChange={handleDepartmentChange}
+              >
+                <MenuItem value={'Sales'}>Sales</MenuItem>
+                <MenuItem value={'Marketing'}>Marketing</MenuItem>
+                <MenuItem value={'Engineering'}>Engineering</MenuItem>
+                <MenuItem value={'Human Resources'}>Human Resources</MenuItem>
+                <MenuItem value={'Legal'}>Legal</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
         </div>
 
         <Button
