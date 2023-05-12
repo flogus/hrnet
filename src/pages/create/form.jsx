@@ -137,17 +137,20 @@ export default function form () {
             />
           </div>
 
-          <FormControl fullWidth>
-            <InputLabel id='americanState-label'>State</InputLabel>
-            <Select
-              labelId='americanState-label'
-              id='americanState'
-              value={americanState}
-              onChange={event => setAmericanState(event.target.value)}
-            >
-              {menuList}
-            </Select>
-          </FormControl>
+          <Box sx={{ minWidth: 120 }}>
+            <FormControl fullWidth>
+              <InputLabel id='americanState-label'>State</InputLabel>
+              <Select
+                labelId='americanState-label'
+                label='State'
+                id='americanState'
+                value={americanState}
+                onChange={event => setAmericanState(event.target.value)}
+              >
+                {menuList}
+              </Select>
+            </FormControl>
+          </Box>
 
           <div className='spaceBetween'>
             <TextField
