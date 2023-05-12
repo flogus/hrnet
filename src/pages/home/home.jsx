@@ -5,7 +5,7 @@ export default function home () {
   return (
     <div className='container'>
       <h2>welcome to HRnet</h2>
-      <img src={logo} alt='Wealth Health' width='300px' />
+      <img src={logo} alt='Wealth Health' width='300px' height='276px' />
     </div>
   )
 }
